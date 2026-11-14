@@ -50,17 +50,3 @@ Aplikasi saat ini memakai PHP `mysqli` dan SQL MySQL/MariaDB. Supabase menyediak
 
 Vercel Hobby saat ini gratis untuk proyek personal/nonkomersial, tetapi proyek ini belum dikemas untuk Vercel. PHP bukan runtime bawaan yang didukung resmi; konfigurasi PHP yang dicontohkan dokumentasi Vercel memakai runtime komunitas. Selain itu, folder `uploads/` lokal tidak cocok untuk penyimpanan permanen pada fungsi serverless. Sebelum deploy, aplikasi perlu runtime PHP yang dipilih, database PostgreSQL atau MySQL terkelola yang kompatibel, dan penyimpanan media persisten. Supabase Free menawarkan Postgres dengan batas penggunaan dan dapat menjeda proyek yang tidak aktif. Periksa batas layanan terbaru sebelum memilihnya.
 
-Rencana tanpa biaya berlangganan dapat memakai GitHub untuk kode, Supabase Free untuk Postgres setelah migrasi, dan Vercel Hobby untuk hosting setelah penyesuaian runtime. Paket gratis memiliki batas dan ketentuan pemakaian; tidak ada jaminan semua trafik, penyimpanan, domain khusus, atau kebutuhan produksi akan tetap gratis.
-
-## Catatan keamanan dan operasional
-
-- Jangan commit `.env`, kredensial, atau berkas media warga. `.gitignore` sudah mengecualikannya.
-- Setel kredensial melalui environment server. Nilai bawaan di `config/database.php` hanya untuk pengembangan lokal.
-- Lakukan backup database dan media sebelum migrasi skema.
-- Untuk database lama, backup dahulu; jalankan `database/ai_features.sql` bila kolom analisis AI belum ada, dan `database/constraints.sql` untuk menegakkan relasi data. Migrasi relasi hanya aman setelah pemeriksaan data yatim menunjukkan hasil nol.
-- Analisis prioritas adalah bantuan awal berbasis kata kunci, bukan keputusan otomatis atau pengganti penilaian petugas.
-- Unggahan lokal dapat hilang saat folder aplikasi dipindah atau server dibangun ulang; gunakan object storage sebelum hosting serverless.
-
-## Keterbatasan pemeriksaan pada perubahan ini
-
-Lingkungan kerja yang digunakan tidak menyediakan perintah `php`/MySQL, sehingga koneksi langsung, eksekusi skema, dan alur halaman belum dapat dijalankan di sini. Terapkan `database/init.sql` pada salinan database pengembangan dan jalankan aplikasi melalui MAMP untuk validasi end-to-end sebelum memindahkan data produksi.
